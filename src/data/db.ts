@@ -1,8 +1,8 @@
-//V-94,Paso 3.1 creamos nuestro type.
+//Vid 94,creamos nuestro type.
 import type { Guitar } from '../types'
 
-//Paso 3.4, le ponemos el arreglo a Guitar []
-export const db: Guitar[] = [
+//vid 94 [], le ponemos el arreglo a Guitar
+export const db : Guitar[] = [
     {
         id: 1,
         name: 'Lukather',
@@ -87,4 +87,4 @@ export const db: Guitar[] = [
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
         price: 379,
     },
-]
+  ]

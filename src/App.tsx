@@ -1,44 +1,44 @@
-/* Vid 55 ,Importamos nuestro componente */
+import { useReducer, useEffect } from "react"
 import Guitar from "./components/Guitar"
-import Heaader from "./components/Header"
-//Vid 87
-import { useCart } from "./hooks/useCart"
+import Header from "./components/Header"
+import { cartReducer, initialState } from "./reducers/cart-reducer"
+
+
 
 function App() {
 
-    //Vid 89
-    const { data, cart, addToCart, removeFromCart, decreaseQuantity, increaseQuantity, clearCart, isEmpty, cartTotal } = useCart()
+    //V-171 ,paso 4.5, importamos el reducer y el initial state
+    const [state, dispatch] = useReducer(cartReducer, initialState)
+
+    //V-181,paso 4.28,
+    useEffect(() => {
+        //Pasamos nuestro carrito a Json 
+        localStorage.setItem('cart', JSON.stringify(state.cart))
+    }, [state.cart])
+
 
     return (
         <>
-            <Heaader
-                //Vid 73
-                cart={cart}
-                removeFromCart={removeFromCart}
-                //Vid 79
-                increaseQuantity={increaseQuantity}
-                //Vid 80
-                decreaseQuantity={decreaseQuantity}
-                //Vid 81
-                clearCart={clearCart}
-                //Vid 90
-                isEmpty={isEmpty}
-                cartTotal={cartTotal}
+            <Header
+                //V-176,paso 4.12
+                cart={state.cart}
+                //V-177,paso 4.18
+                dispatch={dispatch}
+
             />
 
             <main className="container-xl mt-5">
                 <h2 className="text-center">Nuestra Colección</h2>
 
                 <div className="row mt-5">
-
-                    {data.map((guitar) => (
+                    {/*V-172,Paso 4.6, simplificamos pasos con el reducer ahora lo ponemos
+                    state.data */}
+                    {state.data.map((guitar) => (
                         <Guitar
-                            //Vid 66 ,siempre becesitan una key,si tenemos una base podemos ponerle el id.
                             key={guitar.id}
                             guitar={guitar}
-                            //Vid 68
-                            addToCart={addToCart}
-
+                            //V-173,paso 4.7 ponemos el dispatch
+                            dispatch={dispatch}
                         />
                     )
                     )}

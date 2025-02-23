@@ -1,5 +1,5 @@
-/*V-94,paso 3.2 definimos las carcatertisticas de la guitarra 
-V-97, Paso 3.7,creamos el type de  guitarra para compartilo en los archivos.*/
+//Vid 97
+//Vid 94, definimos las carcatertisticas de la guitarra 
 export type Guitar = {
     id: number
     name: string
@@ -7,9 +7,15 @@ export type Guitar = {
     description: string
     price: number
 }
-//V-99,paso 3.9 hacemos herencia para heredar todos los atributos solo que le agregaremos uno más
+//Vid 99 hacemos herencia 
 export type CartItem = Guitar & {
     quantity: number
 }
 
+// export type CartItem = Pick<Guitar, 'id' | 'name' | 'price' > & {
+//     quantity: number
+// }
+// export type CartItem = Omit<Guitar, 'id' | 'name' | 'price' > & {
+//     quantity: number
+// }
 

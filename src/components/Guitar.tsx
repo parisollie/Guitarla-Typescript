@@ -1,18 +1,23 @@
 import type { Guitar } from '../types'
+import { Dispatch } from 'react'
+import type { CartActions } from '../reducers/cart-reducer'
 
-//V-96,Paso 3.7,si el type es de un componente se deja en la misma página.
+//Vid 96, si el type es de un compeonente se deja en la misma página.
 type GuitarProps = {
 
-    //V-95,Paso 3.5, le diremos que guiarra tendrá el tipo de guitarra.
+    //Vid 95, tendra el tipo de guitarra
     guitar: Guitar,
-    //V-95,Paso 3.6,El item que voy asignar será de guitarra y no retorna nada.
-    addToCart: (item: Guitar) => void
+
+    //V-173,paso 4.8, le pasamos el dispatch
+    dispatch: Dispatch<CartActions>
 }
 
-//Paso 3.8, le asignamos los props
-export default function Guitar({ guitar, addToCart }: GuitarProps) {
+//Vid 58, creando otro componente
+//Vid 65,props
+export default function Guitar({ guitar, dispatch }: GuitarProps) {
 
-    //V-66
+    //console.log(guitar)
+    //Vid 66
     const { name, image, description, price } = guitar
 
     return (
@@ -27,8 +32,8 @@ export default function Guitar({ guitar, addToCart }: GuitarProps) {
                 <button
                     type="button"
                     className="btn btn-dark w-100"
-                    //Vid 69
-                    onClick={() => addToCart(guitar)}
+                    //V-173,paso 4.9, le ponemos el dispatch que usamos add-to-cart
+                    onClick={() => dispatch({ type: 'add-to-cart', payload: { item: guitar } })}
 
                 >Agregar al Carrito</button>
             </div>
