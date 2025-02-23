@@ -17,6 +17,10 @@ This application contains the following knowledge:
 - Props
 
 - Local Storage
+
+- Hook peronalized
+
+- Use Reducer
   
 -Save and read files in Json and XML format
 
